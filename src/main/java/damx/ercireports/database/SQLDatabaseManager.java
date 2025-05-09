@@ -6,11 +6,14 @@ import java.sql.SQLException;
 
 public class SQLDatabaseManager {
     //private static final Dotenv dotenv = Dotenv.load();
-
-    private static final int DB_PORT = Integer.parseInt(System.getenv("DB_PORT"));
-    private static final String DB_USER = System.getenv("DB_USER");
-    private static final String DB_PASSWORD = System.getenv("DB_PASSWORD");
-    private static final String DB_NAME = System.getenv("DB_NAME");
+    private static final int DB_PORT = 5432;
+    private static final String DB_USER = "postgres";
+    private static final String DB_PASSWORD = "admin";
+    private static final String DB_NAME = "docker";
+//    private static final int DB_PORT = Integer.parseInt(System.getenv("DB_PORT"));
+//    private static final String DB_USER = System.getenv("DB_USER");
+//    private static final String DB_PASSWORD = System.getenv("DB_PASSWORD");
+//    private static final String DB_NAME = System.getenv("DB_NAME");
     /**
      * Establece una conexión a la base de datos PostgreSQL
      *
@@ -20,7 +23,7 @@ public class SQLDatabaseManager {
     public static Connection connect() throws SQLException {
         try {
             // Establecer la conexión a la base de datos PostgreSQL
-            String jdbcUrl = "jdbc:postgresql://localhost:" + DB_PORT + "/" + DB_NAME;
+            String jdbcUrl = "jdbc:postgresql://172.19.0.3:" + DB_PORT + "/" + DB_NAME;
             Connection connection = DriverManager.getConnection(jdbcUrl, DB_USER, DB_PASSWORD);
 
             if (connection == null) {
