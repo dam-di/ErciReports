@@ -1,7 +1,7 @@
 package damx.ercireports.controllers;
 
 import damx.ercireports.services.ReportService;
-import net.sf.jasperreports.engine.JRException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -33,8 +33,6 @@ public class ReportsController {
             headers.add("Content-Disposition","inline; filename=report.pdf");
 
             return new ResponseEntity<>(report, headers, HttpStatus.OK);
-        } catch (JRException e) {
-            System.out.println(e.getMessage());
 
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
