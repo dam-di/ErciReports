@@ -5,12 +5,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class SQLDatabaseManager {
-    private static final Dotenv dotenv = Dotenv.load();
+    //private static final Dotenv dotenv = Dotenv.load();
 
-    private static final int DB_PORT = Integer.parseInt(dotenv.get("DB_PORT"));
-    private static final String DB_USER = dotenv.get("DB_USER");
-    private static final String DB_PASSWORD = dotenv.get("DB_PASSWORD");
-    private static final String DB_NAME = dotenv.get("DB_NAME");
+    private static final int DB_PORT = Integer.parseInt(System.getenv("DB_PORT"));
+    private static final String DB_USER = System.getenv("DB_USER");
+    private static final String DB_PASSWORD = System.getenv("DB_PASSWORD");
+    private static final String DB_NAME = System.getenv("DB_NAME");
     /**
      * Establece una conexión a la base de datos PostgreSQL
      *
